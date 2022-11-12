@@ -9,13 +9,31 @@
     return array;
 }
 
+string[] ThreeSymbols(string[] array) 
+{
+    int j = 0;
+    string[] threeSymb = new string[array.Length];
+    
+       for(int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length <= 3)
+        {
+            threeSymb[j] = array[i];
+            j++;
+        }
+    }
+    Array.Resize(ref threeSymb, j);
+    return threeSymb;
+}
+
 try 
 {
     Console.WriteLine("Задайте размер массива: ");
     int size = Convert.ToInt32(Console.ReadLine());
     string[] array1 = FillArray(size);
-    string[] array2 = new string[size];
-    Console.WriteLine($"Array1: [{String.Join(", ", array1)}]");
+    Console.WriteLine($"Исходный массив: [{String.Join(", ", array1)}]");
+    string[] array2 = ThreeSymbols(array1);
+    Console.WriteLine($"Итоговый массив: [{String.Join(", ", array2)}]");
 } 
 catch
 {
